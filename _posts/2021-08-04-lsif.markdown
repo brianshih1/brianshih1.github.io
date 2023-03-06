@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Building an LSIF indexer for a low-code platform"
+date: 2021-08-04 14:01:04 -0500
+categories: jekyll update
+---
+
+<script type="text/javascript">
+  window.location.href = 'https://www.airkit.com/blog/building-language-server-index-format-indexer/';
+</script>
+
+If you are not redirected automatically, follow this <a href="https://www.airkit.com/blog/building-language-server-index-format-indexer/">link</a>.
