@@ -2,7 +2,7 @@
 layout: post
 title: "Building an LSIF indexer for a low-code platform"
 date: 2021-08-04 14:01:04 -0500
-categories: jekyll update
+categories: blog
 ---
 
 <script type="text/javascript">
