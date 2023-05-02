@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Building a Transactional Key-Value Database on Top of RocksDB"
+date: 2023-05-01 14:01:04 -0500
+categories: blog
+---
+
+<script type="text/javascript">
+  window.location.href = 'https://brianshih1.github.io/little-key-value-db/';
+</script>
+
+If you are not redirected automatically, follow this <a href="https://brianshih1.github.io/little-key-value-db/">link</a>.
