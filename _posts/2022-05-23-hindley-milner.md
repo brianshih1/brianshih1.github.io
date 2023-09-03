@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building a Hindley Milner Type Inference System for Airscript"
-date: 2023-05-23 14:01:04 -0500
+date: 2022-05-23 14:01:04 -0500
 categories: blog
 ---
 
