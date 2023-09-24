@@ -10,9 +10,9 @@ Authors: [Rishi](https://www.linkedin.com/in/rishivijayv/), [Brian](https://www.
 When developers build applications that deal with sensitive data, such as a user’s Social Security Number (SSN), they often need to abide by data regulations such as  [PII](https://www.comparitech.com/net-admin/what-is-pii-compliance/) or [PCI](https://www.nerdwallet.com/article/small-business/pci-compliance). These regulations have two main requirements:
 
 1. The ability to respond to data requests: The system needs to be able to respond to requests about what sensitive data the system holds at any moment.
-2. Compliance auditing: The system needs to have a detailed log about when/how the sensitive data is collected and when/where the sensitive data is transmitted to a third party system.
+2. Compliance auditing: The system needs to have a detailed log about when/how the sensitive data is collected and when/where the sensitive data is transmitted to a third-party system.
 
-Building an application that abides by these requirements require a lot of manual work and overhead. It’s also error prone to data leakages and missed audit events. At Airkit, we wanted to make it super easy for developers to build compliant applications that deal with sensitive data. To achieve that, we built our own application framework as well as our own programming language, Airscript, to build such applications. Let’s look at the language and runtime primitives we baked into Airscript.
+Building an application that abides by these requirements requires a lot of manual work and overhead. It’s also error-prone to data leakages and missed audit events. At Airkit, we wanted to make it super easy for developers to build compliant applications that deal with sensitive data. To achieve that, we built our own application framework as well as our own programming language, Airscript, to enable developers to build such applications. Let’s look at the language and runtime primitives we baked into Airscript.
 
 
 
@@ -52,17 +52,15 @@ IN
 
 
 
-
-
 ### Metadata Boxing
 
 In programming languages, boxing is the process of converting a primitive type to an object type. In Java, you may choose to convert the primitive int into a boxed Integer. The exact meaning and behavior of boxing depend on the language you’re using. We developed a special form of boxing called metadata boxing for Airscript.
 
 The core idea behind metadata boxing is that the runtime not only boxes all primitive data types, it also attaches a bag of metadata to each boxed object, called [data tags](https://support.airkit.com/docs/data-masking-and-auditing). The data tags of each boxed value can be used to store arbitrary metadata about the underlying data. In Airscript’s case, the boxed value stores the sensitivity of the data (e.g. PII, PCI, HIPAA). By having the data tags attached to the raw value, the tags will automatically be propagated alongside the data across function calls.
 
-Airscript is compiled into JSON and interpreted by a runtime built in Typescript. Airscript has primitive types such as number, string, boolean, date, null. But, the runtime doesn’t use Javascript primitives as the runtime representation for Airscript’s primitive data types. Instead, the runtime uses a boxed data type called AirValue. Each Airscript primitive data type has corresponding AirValue constructors which instantiate the boxed objects. These AirValue constructors create AirValue instances.
+Airscript is compiled into JSON and interpreted by a runtime built with Typescript. Airscript has primitive types such as number, string, boolean, date, and null. But, the runtime doesn’t use Javascript primitives as the runtime representation for Airscript’s primitive data types. Instead, the runtime uses a boxed data type called AirValue. Each Airscript primitive data type has corresponding AirValue constructors which instantiate the boxed objects. These AirValue constructors create AirValue instances.
 
-For example, instead of using Javascript’s primitive number as the runtime value, the runtime constructs a boxed object with the AirNumber constructor. Similarly, there are other constructors such as AirBoolean, AirString, AirRecord, AirList, AirNull that are used to create runtime value for other primitive data types. 
+For example, instead of using Javascript’s primitive number as the runtime value, the runtime constructs a boxed object with the AirNumber constructor. Similarly, there are other constructors such as AirBoolean, AirString, AirRecord, AirList, AirNull that are used to create runtime values for other primitive data types. 
 
 To develop a better understanding of what this means, let’s take a look at the following expression
 
@@ -103,7 +101,7 @@ Under the hood, the above Airscript expression is compiled and evaluated as foll
 
 This example is quite complex, but the takeaway is that functions in the Airscript runtime take in AirValue instances as inputs. The function body is also implemented with the API AirValue exposes. This essentially means that Airscript compiles down into lower-level AirValue methods.
 
-Boxing Airscript primitives comes with trade-offs. Primitive Javascript data types are stored on the stack while objects are stored in the heap. As a result, boxing can be slower and more memory intensive. It also requires us to build a suite of methods for each AirValue instance to implement Airscript’s evaluator.  But, having end-to-end control over the runtime data structure unlocks data tagging, which we will cover in the next section. 
+Boxing Airscript primitives come with trade-offs. Primitive Javascript data types are stored on the stack while objects are stored in the heap. As a result, boxing can be slower and more memory-intensive. It also requires us to build a suite of methods for each AirValue instance to implement Airscript’s evaluator.  But, having end-to-end control over the runtime data structure unlocks data tagging, which we will cover in the next section. 
 
 
 
@@ -137,7 +135,7 @@ childAirValue.getTag("PII") // abc123
 
 In this code snippet, we created an AirRecord with the value { “foo”: “bar”}. We then tag the entire object as PII. If we access the foo property, the child AirValue will also have the PII tag with the same tag value. In this example, ”abc123” is just an arbitrary string to demonstrate that a tag’s value is also propagated to its child.
 
-Similarly, if you concatenate two AirString instances with the concat method, the resulting AirString instance combines the tags of the two respective AirValue instances.
+Similarly, if you concatenate two AirString instances with the `concat` method, the resulting AirString instance combines the tags of the two respective AirValue instances.
 
 ```typescript
 const piiString = AirString("foo").setTag("PII", 123)
@@ -210,7 +208,7 @@ These examples serve as a summary of how Airscript’s runtime works. Expression
 
 Developers want to know the lifecycle of sensitive data across the application runtime. They are interested in learning how the data was captured, how the data was transformed, and whether or not the data was sent to third-party services. 
 
-Metadata boxing already allows us to track sensitive data across application runtime. But we still need a way to group the audit events based on which data the audit event is related to. In Airkit’s runtime, we  assign a unique tagId to each piece of sensitive data. Each time an audit event is emitted, we attach the tagId to the audit event. This way, the audit events can be grouped together by the tagId. 
+Metadata boxing already allows us to track sensitive data across application runtime. However, we still need a way to group the audit events based on which data the audit event is related to. In Airkit’s runtime, we assign a unique tagId to each piece of sensitive data. Each time an audit event is emitted, we attach the tagId to the audit event. This way, the audit events can be grouped together by the tagId. 
 
 The concept of tagId is inspired by distributed tracing. Distributed tracing uses traceId and spanId to trace how task execution propagates across microservices. Instead of traceId and spanId, we use tagId and parentTagIds to track how sensitive data flows across the runtime and external services. So how is tagId attached to AirValue instances? The setTag method we covered earlier automatically returns a tagged AirValue instance with a unique tagId.
 
@@ -250,9 +248,13 @@ AirValue is the runtime representation of the primitive data types in Airscript.
 
 ### Storage
 
-State management is one of the core components in Airscript’s runtime. Something unique about the runtime is that all application state is automatically persisted in Airkit’s distributed document store (built on top of Redis and Postgres). This means that any data set in the state store will automatically become accessible to concurrent clients and servers in near real time. This is similar to Google Doc or Figma in which the document state is automatically persisted. This means that if a user is typing into a text input in an application built on top of Airkit but accidentally closes the link, the data will still be there when the user reopens the link.
+Airkit's application framework comes with its own state store. Developers can store variables by performing a `SET_VARIABLE(variable, value)` call such as:
 
-Storing application state poses a new challenge for tracking sensitive data. When the application state contains sensitive data, we need to make sure the sensitivity of the data is persisted along with the data. This way, when the persisted state is accessed by a concurrent client, the instantiated AirValue instances have the correct sensitivity tag in them.
+```
+SET_VARIABLE(session.foo, { "hello": "world" })
+```
+
+Storing application states poses a new challenge for tracking sensitive data. When the application state contains sensitive data, we need to make sure the sensitivity of the data is persisted along with the data. This way, when the persisted state is accessed by a concurrent client, the instantiated AirValue instances have the correct sensitivity tag in them.
 
 To achieve this, we defined a new data format to store the application state.
 
