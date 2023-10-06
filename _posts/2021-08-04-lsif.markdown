@@ -3,6 +3,7 @@ layout: post
 title: "Building an LSIF indexer for a low-code platform"
 date: 2021-08-04 14:01:04 -0500
 categories: blog
+favorite: t
 ---
 
 In the past 2.5 years of working at Airkit, I’ve been delving deeper and deeper into the fascinating realm of low-code. Amidst this eye-opening yet rather winding expedition, I've begun to appreciate the beauty of abstractions. By examining the Airkit’s abstract syntax tree (AST) and my journey of building a Language Server Index Format (LSIF) indexer, we will explore the power of abstractions in the context of a low-code platform.

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Airscript – a programming language designed to deal with sensitive data"
+title: "Airscript – A Programming Language Designed to Deal with Sensitive Data"
 date: 2023-03-16 14:01:04 -0500
 categories: blog
 ---
