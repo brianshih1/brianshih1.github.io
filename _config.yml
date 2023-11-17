@@ -29,7 +29,6 @@ google_analytics: G-41KHFCMZ4F
 
 # Build settings
 theme: minima
-remote_theme: jekyll/minima
 plugins:
   - jekyll-feed
 # Exclude from processing.
