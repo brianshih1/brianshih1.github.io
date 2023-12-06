@@ -12,4 +12,4 @@ I am quite new to the field of databases so my current goal is to learn as much 
 
 You can check out my GitHub [here](https://github.com/brianshih1).
 
-Apart from coding, I enjoy photography and watching basketball.
+Apart from coding, I also enjoy photography and watching basketball. Check out my photography instagram account [here](https://www.instagram.com/brianshihphotography/)!
