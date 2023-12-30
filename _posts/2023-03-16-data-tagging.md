@@ -7,6 +7,8 @@ categories: blog
 
 Authors: [Rishi](https://www.linkedin.com/in/rishivijayv/), [Brian](https://www.linkedin.com/in/brian-shih/), [Vishnu](https://www.linkedin.com/in/srivishnur/)
 
+*The original blog link no longer exists after Airkit was acquired*
+
 When developers build applications that deal with sensitive data, such as a user’s Social Security Number (SSN), they often need to abide by data regulations such as  [PII](https://www.comparitech.com/net-admin/what-is-pii-compliance/) or [PCI](https://www.nerdwallet.com/article/small-business/pci-compliance). These regulations have two main requirements:
 
 1. The ability to respond to data requests: The system needs to be able to respond to requests about what sensitive data the system holds at any moment.

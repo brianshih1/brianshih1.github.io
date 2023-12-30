@@ -6,7 +6,9 @@ categories: blog
 favorite: t
 ---
 
-In the past 2.5 years of working at Airkit, I’ve been delving deeper and deeper into the fascinating realm of low-code. Amidst this eye-opening yet rather winding expedition, I've begun to appreciate the beauty of abstractions. By examining the Airkit’s abstract syntax tree (AST) and my journey of building a Language Server Index Format (LSIF) indexer, we will explore the power of abstractions in the context of a low-code platform.
+*The original blog link no longer exists after Airkit was acquired*
+
+In the past few years of working at Airkit, I’ve been delving deeper and deeper into the fascinating realm of low-code. Amidst this eye-opening yet rather winding expedition, I've begun to appreciate the beauty of abstractions. By examining the Airkit’s abstract syntax tree (AST) and my journey of building a Language Server Index Format (LSIF) indexer, we will explore the power of abstractions in the context of a low-code platform.
 
 ### What is Low-Code?
 
