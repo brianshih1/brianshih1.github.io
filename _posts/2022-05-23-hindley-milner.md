@@ -5,7 +5,7 @@ date: 2022-05-23 14:01:04 -0500
 categories: blog
 ---
 
-*The original blog link no longer exists after Airkit was acquired*
+*The original company blog link no longer exists after Airkit was acquired*
 
 At Airkit, we developed our own programming language called Airscript. When developers build apps with Airscript, we want them to feel confident about the code they write. This is the job of Airscript’s type checker. It helps developers catch errors before they even run their code.
 
