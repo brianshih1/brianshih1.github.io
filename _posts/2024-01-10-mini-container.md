@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building a Container from Scratch in Rust"
-date: 2023-12-22 14:01:04 -0500
+date: 2024-01-10 14:01:04 -0500
 categories: blog
 ---
 
