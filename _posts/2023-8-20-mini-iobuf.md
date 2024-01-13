@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Reimplementing Redpanda's 0-copy Buffer Management Solution for Thread-Per-Core in Rust"
+title: "Reimplementing Redpanda's Buffer Management Solution in Rust"
 date: 2023-08-20 14:01:04 -0500
 categories: blog
 ---
