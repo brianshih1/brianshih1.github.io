@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-My name is **Brian**. My passion is in **databases**, **application frameworks**, and **programming languages**. 
+My name is **Brian**. My passion is in **databases**, **serverless technologies**, **application frameworks**, and **programming languages**. 
 
 I am interested in the intersection between databases and application frameworks. I believe that databases are more than just a means for storing data. The right database abstractions and application framework for a problem not only simplifies the work for the programmer, but also serve as a framework for the developer to think about the problem more intuitively.
 
