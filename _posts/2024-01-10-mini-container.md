@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building a Container from Scratch in Rust"
+title: "Building a Container Runtime from Scratch in Rust"
 date: 2024-01-10 14:01:04 -0500
 categories: blog
 ---
