@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deep dive into an asynchronous runtime"
+title: "Building an Asynchronous Runtime in Rust"
 date: 2023-10-20-20 14:01:04 -0500
 categories: blog
 ---
