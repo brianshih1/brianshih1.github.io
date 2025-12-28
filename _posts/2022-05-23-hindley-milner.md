@@ -3,6 +3,7 @@ layout: post
 title: "Building a Hindley Milner Type Inference System for Airscript"
 date: 2022-05-23 14:01:04 -0500
 categories: blog
+favorite: t
 ---
 
 *The original company blog link no longer exists after Airkit was acquired*
