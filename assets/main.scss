@@ -7,3 +7,175 @@
     display: block;
     font-size: 18px;
   }
+
+/* Floating Table of Contents Styles */
+.floating-toc {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  max-width: 280px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: opacity 0.3s ease;
+}
+
+.floating-toc.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-toc-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.floating-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.floating-toc > ul {
+  padding-left: 0;
+}
+
+.floating-toc li {
+  margin: 4px 0;
+  position: relative;
+  padding-left: 0;
+}
+
+.floating-toc .toc-item {
+  position: relative;
+}
+
+/* Nested lists */
+.floating-toc .toc-nested {
+  margin-left: 16px;
+  padding-left: 12px;
+  border-left: 1px solid #e0e0e0;
+  position: relative;
+}
+
+/* Vertical line for nested items */
+.floating-toc .toc-nested::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e0e0e0;
+}
+
+.floating-toc a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+  position: relative;
+  line-height: 1.4;
+}
+
+.floating-toc a:hover {
+  color: #000;
+  background-color: #f5f5f5;
+}
+
+.floating-toc a.active {
+  color: #6b46c1;
+  background-color: #f3f4f6;
+  font-weight: 500;
+}
+
+/* Active state with left border indicator */
+.floating-toc a.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #6b46c1;
+}
+
+/* Top-level active items */
+.floating-toc > ul > li > a.active::before {
+  left: -13px;
+}
+
+/* Nested active items - align with vertical line (12px padding + 1px for border) */
+.floating-toc .toc-nested a.active::before {
+  left: -13px;
+}
+
+/* Level-specific styling */
+.floating-toc .toc-level-2 {
+  font-size: 14px;
+}
+
+.floating-toc .toc-level-3 {
+  font-size: 13px;
+}
+
+.floating-toc .toc-level-4,
+.floating-toc .toc-level-5,
+.floating-toc .toc-level-6 {
+  font-size: 12px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add IDs to headings for anchor links */
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  scroll-margin-top: 20px;
+}
+
+/* Hide TOC on mobile */
+@media (max-width: 1200px) {
+  .floating-toc {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for TOC */
+.floating-toc::-webkit-scrollbar {
+  width: 6px;
+}
+
+.floating-toc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.floating-toc::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.floating-toc::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
