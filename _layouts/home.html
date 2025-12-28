@@ -16,16 +16,19 @@ layout: default
     {%- if post.favorite -%}
 
     {%- endif -%}
-    <li>
-
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <span class="post-meta">{{ post.date | date: date_format }}</span>
-
-      <h3>
-        <a class="post-link" href="{{ post.url | relative_url }}">
-          {{ post.title | escape }}
-        </a>
-      </h3>
+    <li class="{% if post.favorite %}post-favorite{% endif %}">
+      {%- assign date_format = site.minima.date_format | default: "%^b %-d %Y" -%}
+      {%- if post.favorite -%}
+        <span class="favorite-star" title="Favorite post">★</span>
+      {%- endif -%}
+      <div class="post-title-row">
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+      </div>
       {%- if site.show_excerpts -%}
       {{ post.excerpt }}
       {%- endif -%}
