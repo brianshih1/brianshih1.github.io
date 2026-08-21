@@ -3,6 +3,7 @@ layout: post
 title: "Move Fast and Don't Break Things: Automatic Kafka Migrations with Orbit"
 date: 2026-08-19 14:01:04 -0500
 categories: blog
+favorite: t
 ---
 
 <script type="text/javascript">
